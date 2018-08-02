@@ -1,6 +1,6 @@
 # Certbot Dockerfile
 
----
+[![Docker Build Status](https://img.shields.io/docker/build/gokaygurcan/certbot.svg?style=for-the-badge&logo=docker&colorA=22b8eb)](https://hub.docker.com/r/gokaygurcan/certbot/)
 
 To pull the image
 
