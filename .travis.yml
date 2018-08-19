@@ -14,7 +14,7 @@ before_script:
 
 script:
   - docker build --rm -t gokaygurcan/certbot:test .
-  - docker run --rm -d --name certbot gokaygurcan/certbot:test certbot --version
+  - docker run --rm --name certbot gokaygurcan/certbot:test certbot --version
 
 notifications:
   email: false
