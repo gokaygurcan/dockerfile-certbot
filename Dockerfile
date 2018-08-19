@@ -1,18 +1,28 @@
 # gokaygurcan/dockerfile-certbot
 
-FROM gokaygurcan/ubuntu:18.04
+FROM gokaygurcan/ubuntu:latest
 
 LABEL maintainer="Gökay Gürcan <docker@gokaygurcan.com>"
 
 ENV DEBIAN_FRONTEND="noninteractive"
 
+USER root
+
 VOLUME /etc/letsencrypt
-VOLUME /var/www
 
-RUN sudo apt-get update -q && \
-    sudo apt-get install -yq --no-install-recommends software-properties-common && \
-    sudo add-apt-repository ppa:certbot/certbot && \
-    sudo apt-get update -q && \
-    sudo apt-get install -yq --no-install-recommends certbot
+RUN apt-get update -q && \
+    apt-get install -yq --no-install-recommends software-properties-common && \
+    add-apt-repository ppa:certbot/certbot && \
+    apt-get update -q && \
+    apt-get install -yq --no-install-recommends certbot && \
+    apt-get autoclean -yqq && \
+    apt-get autoremove -yqq && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/* && \
+    rm -rf /var/tmp/*
 
-WORKDIR /etc/letsencrypt
+WORKDIR /usr/bin
+
+EXPOSE 80/tcp 443/tcp
+
+USER ubuntu
