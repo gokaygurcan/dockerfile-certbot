@@ -8,13 +8,13 @@ ENV DEBIAN_FRONTEND="noninteractive"
 
 USER root
 
-VOLUME /etc/letsencrypt
-
-RUN apt-get update -q && \
-    apt-get install -yq --no-install-recommends software-properties-common && \
+RUN set -ex && \
+    ln -fs /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime && \
     add-apt-repository ppa:certbot/certbot && \
-    apt-get update -q && \
-    apt-get install -yq --no-install-recommends certbot && \
+    apt-get update -qq && \
+    apt-get upgrade -yqq && \
+    apt-get install -yqq --no-install-recommends --no-install-suggests \
+    certbot && \
     apt-get autoclean -yqq && \
     apt-get autoremove -yqq && \
     rm -rf /var/lib/apt/lists/* && \
@@ -23,6 +23,10 @@ RUN apt-get update -q && \
 
 WORKDIR /usr/bin
 
+VOLUME [ "/etc/letsencrypt" ]
+
 EXPOSE 80/tcp 443/tcp
 
 USER ubuntu
+
+CMD [ "certbot" ]
