@@ -14,7 +14,9 @@ RUN set -ex && \
     apt-get update -qq && \
     apt-get upgrade -yqq && \
     apt-get install -yqq --no-install-recommends --no-install-suggests \
-    certbot && \
+    certbot \
+    python3-certbot-dns-digitalocean \
+    python3-pip && \
     apt-get autoclean -yqq && \
     apt-get autoremove -yqq && \
     rm -rf /var/lib/apt/lists/* && \
