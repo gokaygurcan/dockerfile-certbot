@@ -67,7 +67,3 @@ docker run -it --rm \
     --http-01-port 80 \
     --tls-sni-01-port 443
 ```
-
----
-
-[![Buy me a coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/gokaygurcan)
