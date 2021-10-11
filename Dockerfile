@@ -10,7 +10,6 @@ USER root
 
 RUN set -ex && \
     ln -fs /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime && \
-    add-apt-repository ppa:certbot/certbot && \
     apt-get update -qq && \
     apt-get upgrade -yqq && \
     apt-get install -yqq --no-install-recommends --no-install-suggests \
