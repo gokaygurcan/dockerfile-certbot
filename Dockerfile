@@ -2,25 +2,38 @@
 
 FROM gokaygurcan/ubuntu:latest
 
-LABEL maintainer="Gökay Gürcan <docker@gokaygurcan.com>"
+# metadata
+LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
 
-ENV DEBIAN_FRONTEND="noninteractive"
+# set up environment variables
+ENV DEBIAN_FRONTEND="noninteractive" \
+    LANGUAGE="en_US.UTF-8" \
+    LANG="en_US.UTF-8" \
+    LC_ALL="en_US.UTF-8" \
+    TZ="Europe/Amsterdam" \
+    USER="ubuntu"
 
 USER root
 
 RUN set -ex && \
     ln -fs /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime && \
+    # upgrade packages
     apt-get update -qq && \
     apt-get upgrade -yqq && \
+    # install packages
     apt-get install -yqq --no-install-recommends --no-install-suggests \
     certbot \
     python3-certbot-dns-digitalocean \
+    python3-certbot-dns-cloudflare \
     python3-pip && \
     apt-get autoclean -yqq && \
     apt-get autoremove -yqq && \
-    rm -rf /var/lib/apt/lists/* && \
+    # clean up
+    apt-get autoclean -yqq && \
+    apt-get autoremove -yqq && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
     rm -rf /tmp/* && \
-    rm -rf /var/tmp/*
+    rm -rf /var/tmp/* && \
 
 WORKDIR /usr/bin
 
