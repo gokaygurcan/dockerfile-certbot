@@ -33,7 +33,7 @@ RUN set -ex && \
     apt-get autoremove -yqq && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
     rm -rf /tmp/* && \
-    rm -rf /var/tmp/* && \
+    rm -rf /var/tmp/*
 
 WORKDIR /usr/bin
 
