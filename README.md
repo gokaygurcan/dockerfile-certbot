@@ -1,7 +1,5 @@
 # Certbot/Let's Encrypt
 
-[![Docker Build Status](https://img.shields.io/docker/build/gokaygurcan/certbot.svg?style=for-the-badge&logo=docker&colorA=22b8eb)](https://hub.docker.com/r/gokaygurcan/certbot/) [![MicroBadger](https://img.shields.io/microbadger/image-size/gokaygurcan/certbot.svg?style=for-the-badge&colorA=337ab7&colorB=252528)](https://microbadger.com/images/gokaygurcan/certbot)
-
 ## Additional packages
 
 - certbot
