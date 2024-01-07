@@ -23,8 +23,18 @@ RUN set -ex && \
     # install packages
     apt-get install -yqq --no-install-recommends --no-install-suggests \
     certbot \
-    python3-certbot-dns-digitalocean \
     python3-certbot-dns-cloudflare \
+    python3-certbot-dns-digitalocean \
+    python3-certbot-dns-dnsimple \
+    python3-certbot-dns-gandi \
+    python3-certbot-dns-gehirn \
+    python3-certbot-dns-google \
+    python3-certbot-dns-linode \
+    python3-certbot-dns-ovh \
+    python3-certbot-dns-rfc2136 \
+    python3-certbot-dns-route53 \
+    python3-certbot-dns-sakuracloud \
+    python3-certbot-dns-standalone \
     python3-pip && \
     apt-get autoclean -yqq && \
     apt-get autoremove -yqq && \
